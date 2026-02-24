@@ -34,7 +34,7 @@ export default function CopyCAButton({ ca }: { ca: string }) {
       onClick={onCopy}
       className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-2 text-sm font-medium
                  text-white/90 backdrop-blur-xl ring-1 ring-white/15
-                 hover:bg-white/15 active:scale-[0.98] transition"
+                 hover:bg-white/15 active:scale-[0.98] transition cursor-pointer"
       aria-label="Copy contract address"
       title="Copy CA"
     >
