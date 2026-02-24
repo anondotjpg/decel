@@ -34,7 +34,7 @@ export default function Home() {
         </h1>
 
         <p className="mt-6 text-lg leading-8 text-white/90 drop-shadow-sm sm:text-xl">
-          someone who believes that AI and other
+          a decel is someone who believes that AI and other
           new technologies are developing so quickly that they are likely to cause very serious problems
           and that progress should be deliberately slowed down.
         </p>
