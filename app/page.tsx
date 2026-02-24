@@ -35,7 +35,7 @@ export default function Home() {
         href="https://pump.fun/coin/BUJbxmxX3xsCbSgpJrnPyXF6rG1WT1QrurHFB8Mepump"
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute right-5 top-5 z-10"
+        className="absolute right-5 top-5 z-999"
         aria-label="Open pump.fun"
       >
         <Image
