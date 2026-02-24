@@ -2,6 +2,7 @@ import Image from "next/image";
 import fs from "fs";
 import path from "path";
 import CopyCAButton from "./CopyCAButton";
+import AudioOnCopy from "./AudioOnCopy";
 
 export default function Home() {
   const decelDir = path.join(process.cwd(), "public/Decel");
@@ -17,21 +18,24 @@ export default function Home() {
   const CA = "BUJbxmxX3xsCbSgpJrnPyXF6rG1WT1QrurHFB8Mepump";
 
   return (
-    <div className="relative min-h-screen font-sans bg-[url('/bg.gif')] bg-cover bg-center bg-no-repeat bg-fixed">
+    <div className="relative min-h-[100svh] font-sans">
+      {/* hidden audio that starts when CA is copied */}
+      <AudioOnCopy />
+
+      {/* Fixed background GIF that truly covers on mobile */}
+      <div className="pointer-events-none fixed inset-0 -z-10">
+        <Image
+          src="/bg.gif"
+          alt=""
+          fill
+          priority
+          unoptimized
+          className="object-cover"
+        />
+      </div>
+
       {/* overlay */}
       <div className="pointer-events-none absolute inset-0 bg-black/40" />
-
-      {/* top-left: audio */}
-      <div className="absolute left-5 top-5 z-[999]">
-        <audio
-          controls
-          preload="metadata"
-          controlsList="nodownload noplaybackrate"
-          className="h-9 w-[220px] opacity-90"
-        >
-          <source src="/lofi.mp3" type="audio/mpeg" />
-        </audio>
-      </div>
 
       {/* top-right: copy pill + pump icon */}
       <div className="absolute right-5 top-5 z-[999] flex items-center gap-3">
@@ -56,7 +60,7 @@ export default function Home() {
       </div>
 
       {/* HERO */}
-      <section className="relative z-10 flex h-screen items-center justify-center px-6 text-center">
+      <section className="relative z-10 flex min-h-[100svh] items-center justify-center px-6 text-center">
         <div className="mx-auto max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-white drop-shadow-sm md:text-7xl">
             DECEL/ACC

@@ -10,6 +10,8 @@ export default function CopyCAButton({ ca }: { ca: string }) {
     try {
       await navigator.clipboard.writeText(ca);
       setCopied(true);
+      // tell the page "CA was copied" so audio can start
+      window.dispatchEvent(new Event("ca-copied"));
     } catch {
       // fallback (rare)
       const ta = document.createElement("textarea");
@@ -19,6 +21,7 @@ export default function CopyCAButton({ ca }: { ca: string }) {
       document.execCommand("copy");
       document.body.removeChild(ta);
       setCopied(true);
+      window.dispatchEvent(new Event("ca-copied"));
     }
   }
 
@@ -49,7 +52,6 @@ export default function CopyCAButton({ ca }: { ca: string }) {
               transition={{ type: "spring", stiffness: 520, damping: 34 }}
               className="absolute"
             >
-              {/* Copy icon */}
               <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden="true">
                 <path
                   d="M9 9h10v10H9V9Z"
@@ -74,7 +76,6 @@ export default function CopyCAButton({ ca }: { ca: string }) {
               transition={{ type: "spring", stiffness: 520, damping: 34 }}
               className="absolute"
             >
-              {/* Check icon */}
               <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden="true">
                 <path
                   d="M20 6 9 17l-5-5"
@@ -88,7 +89,10 @@ export default function CopyCAButton({ ca }: { ca: string }) {
           )}
         </AnimatePresence>
       </span>
-      <span className="opacity-70">{ca.slice(0, 4)}…{ca.slice(-4)}</span>
+
+      <span className="opacity-70">
+        {ca.slice(0, 4)}…{ca.slice(-4)}
+      </span>
     </button>
   );
 }
