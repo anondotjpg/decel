@@ -1,6 +1,7 @@
 import Image from "next/image";
 import fs from "fs";
 import path from "path";
+import CopyCAButton from "./CopyCAButton";
 
 export default function Home() {
   const decelDir = path.join(process.cwd(), "public/Decel");
@@ -13,13 +14,15 @@ export default function Home() {
   const trimmed = files.length > 5 ? files.slice(0, -5) : files;
   const images = trimmed.map((f) => `/Decel/${encodeURIComponent(f)}`);
 
+  const CA = "BUJbxmxX3xsCbSgpJrnPyXF6rG1WT1QrurHFB8Mepump";
+
   return (
     <div className="relative min-h-screen font-sans bg-[url('/bg.gif')] bg-cover bg-center bg-no-repeat bg-fixed">
       {/* overlay */}
       <div className="pointer-events-none absolute inset-0 bg-black/40" />
 
-      {/* minimalist audio player (top-left) */}
-      <div className="absolute left-5 top-5 z-999">
+      {/* top-left: audio */}
+      <div className="absolute left-5 top-5 z-[999]">
         <audio
           controls
           preload="metadata"
@@ -30,25 +33,29 @@ export default function Home() {
         </audio>
       </div>
 
-      {/* top-right pump link */}
-      <a
-        href="https://pump.fun/coin/BUJbxmxX3xsCbSgpJrnPyXF6rG1WT1QrurHFB8Mepump"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="absolute right-5 top-5 z-999"
-        aria-label="Open pump.fun"
-      >
-        <Image
-          src="/pump.png"
-          alt="pump.fun"
-          width={60}
-          height={60}
-          className="h-auto"
-          priority
-        />
-      </a>
+      {/* top-right: copy pill + pump icon */}
+      <div className="absolute right-5 top-5 z-[999] flex items-center gap-3">
+        <CopyCAButton ca={CA} />
 
-      {/* HERO: exactly one screen tall */}
+        <a
+          href="https://pump.fun/coin/BUJbxmxX3xsCbSgpJrnPyXF6rG1WT1QrurHFB8Mepump"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center"
+          aria-label="Open pump.fun"
+        >
+          <Image
+            src="/pump.png"
+            alt="pump.fun"
+            width={60}
+            height={60}
+            className="h-auto w-[60px]"
+            priority
+          />
+        </a>
+      </div>
+
+      {/* HERO */}
       <section className="relative z-10 flex h-screen items-center justify-center px-6 text-center">
         <div className="mx-auto max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-white drop-shadow-sm md:text-7xl">
@@ -63,7 +70,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* GALLERY: below the hero */}
+      {/* GALLERY */}
       <section className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-14">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {images.map((src) => (
