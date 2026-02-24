@@ -51,7 +51,7 @@ export default function Home() {
       {/* HERO: exactly one screen tall */}
       <section className="relative z-10 flex h-screen items-center justify-center px-6 text-center">
         <div className="mx-auto max-w-2xl">
-          <h1 className="text-4xl font-semibold tracking-tight text-white drop-shadow-sm md:text-7xl">
+          <h1 className="text-4xl font-bold tracking-tight text-white drop-shadow-sm md:text-7xl">
             DECEL/ACC
           </h1>
 
