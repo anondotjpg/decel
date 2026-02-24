@@ -10,17 +10,25 @@ export default function Home() {
     .filter((f) => /\.(png|jpg|jpeg|webp)$/i.test(f))
     .sort();
 
-  // drop the last 5 images (after sorting)
   const trimmed = files.length > 5 ? files.slice(0, -5) : files;
-
   const images = trimmed.map((f) => `/Decel/${encodeURIComponent(f)}`);
 
   return (
-    <div
-      className="relative min-h-screen font-sans bg-[url('/bg.gif')] bg-cover bg-center bg-no-repeat bg-fixed"
-    >
+    <div className="relative min-h-screen font-sans bg-[url('/bg.gif')] bg-cover bg-center bg-no-repeat bg-fixed">
       {/* overlay */}
       <div className="pointer-events-none absolute inset-0 bg-black/40" />
+
+      {/* minimalist audio player (top-left) */}
+      <div className="absolute left-5 top-5 z-999">
+        <audio
+          controls
+          preload="metadata"
+          controlsList="nodownload noplaybackrate"
+          className="h-9 w-[220px] opacity-90"
+        >
+          <source src="/lofi.mp3" type="audio/mpeg" />
+        </audio>
+      </div>
 
       {/* top-right pump link */}
       <a
