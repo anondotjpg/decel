@@ -87,7 +87,7 @@ export default function Home() {
             alt="pump.fun"
             width={60}
             height={60}
-            className="h-auto w-[60px]"
+            className="h-auto w-[64px]"
             priority
           />
         </a>
