@@ -42,6 +42,40 @@ export default function Home() {
         <CopyCAButton ca={CA} />
 
         <a
+          href="https://memedepot.com/d/decel"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center"
+          aria-label="Open depot"
+        >
+          <Image
+            src="/cont.png"
+            alt="depot"
+            width={60}
+            height={60}
+            className="h-auto w-[40px]"
+            priority
+          />
+        </a>
+
+        <a
+          href="https://www.tiktok.com/@decelerationist"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center -mr-4"
+          aria-label="Open tiktok"
+        >
+          <Image
+            src="/tok.png"
+            alt="tiktok"
+            width={60}
+            height={60}
+            className="h-auto w-[40px]"
+            priority
+          />
+        </a>
+
+        <a
           href="https://pump.fun/coin/BUJbxmxX3xsCbSgpJrnPyXF6rG1WT1QrurHFB8Mepump"
           target="_blank"
           rel="noopener noreferrer"
